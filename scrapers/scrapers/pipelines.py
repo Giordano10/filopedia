@@ -1,11 +1,34 @@
-from itemadapter import ItemAdapter
 from scrapy.exceptions import DropItem
 import re
 import json
 
 class MapeadoraPipeline:
 
+    def open_spider(self, spider):
+        """
+            Quando a aranha começa o processo de scraping,
+            ela abre o arquivo json onde serão colocadas as urls dos
+            itens raspados e gera uma lista com os dados do json.
+
+            Caso não carregue o json, vai gerar uma lista vazia
+        """
+        try:
+            self.arquivo = open("urls.json", "w+", encoding="utf-8")
+            self.lista_urls = json.load(self.arquivo)
+        except:
+            self.lista_urls = []
+
     def process_item(self, item, spider):
+        """
+            Depois que a aranha começa o scraping,
+            os itens são tratados para manter somente os nomes de
+            filósofos e títulos parecidos com nomes.
+
+            Cada item vira uma url e é adicionado à propriedade
+            'self.lista_urls'.
+        """
+
+
         titulo = item['titulo']
 
         nomes_romanizados = re.match(r"((^[A-Z][a-z]+, )(\w+[ .]?)+)", titulo)
@@ -28,18 +51,24 @@ class MapeadoraPipeline:
                 nome_filosofo: f"https://pt.wikipedia.org/wiki/{nome_filosofo}"
             }
 
-        try:
-            with open("urls.json", "r+", encoding="utf-8") as urls:
-                lista_urls = json.load(urls)
-        except:
-            lista_urls = []
-
-        if isinstance(lista_urls, list):
-            lista_urls.append(dado_formatado)
-        
-
-        with open("urls.json", "w+", encoding="utf-8") as urls:
-            json.dump(lista_urls, urls, indent=4, ensure_ascii=False)
+        if isinstance(self.lista_urls, list):
+            self.lista_urls.append(dado_formatado)
             
-
         return nome_filosofo
+    
+    
+    def close_spider(self, spider):
+        """
+            Após ter feito o tratamento completo dos itens extraídos,
+            a aranha escreve todos os dados em formato json no arquivo
+            e fecha o arquivo.
+
+            Esse processo reduz a quantidade de vezes que o arquivo é
+            modificado, tornando mais eficiente o código, pois evita
+            um processo redundante.
+        """
+
+
+        json.dump(self.lista_urls, self.arquivo, indent=4, ensure_ascii=False)
+
+        self.arquivo.close()
