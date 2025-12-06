@@ -4,10 +4,6 @@ import re
 import json
 
 class MapeadoraPipeline:
-    def process_item(self, item, spider):
-        line = json.dumps(ItemAdapter(item).asdict()) + "\n"
-        self.file.write(line)
-        return item
 
     def process_item(self, item, spider):
         titulo = item['titulo']
