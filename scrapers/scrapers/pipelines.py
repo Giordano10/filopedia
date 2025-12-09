@@ -74,3 +74,7 @@ class MapeadoraPipeline:
         json.dump(self.lista_urls, self.arquivo, indent=4, ensure_ascii=False)
 
         self.arquivo.close()
+
+class WikipediaPipeline:
+    def process_item(self, item, spider):
+        return item

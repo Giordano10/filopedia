@@ -11,3 +11,11 @@ class ScrapersItem(scrapy.Item):
     # name = scrapy.Field()
     titulo = scrapy.Field()
     url = scrapy.Field()
+
+class WikipediaItem(scrapy.Item):
+    url = scrapy.Field()
+    titulo = scrapy.Field()
+    conteudo = scrapy.Field()
+    ligacoes = scrapy.Field()
+    categorias = scrapy.Field()
+    imagem = scrapy.Field()
