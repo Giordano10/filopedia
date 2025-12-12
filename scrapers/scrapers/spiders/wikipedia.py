@@ -15,10 +15,7 @@ class WikipediaSpider(scrapy.Spider):
     
     with open("urls.json", "r", encoding="utf-8") as arquivo:
         lista_urls = json.load(arquivo)
-        lista_urls_wikipedia = []
-        for dicionario in lista_urls:
-            for nome, url in dicionario.items():
-                lista_urls_wikipedia.append(url)
+        lista_urls_wikipedia = [list(dicionario.values())[0] for dicionario in lista_urls]
 
     start_urls = lista_urls_wikipedia
 
