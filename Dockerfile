@@ -4,8 +4,6 @@
 # If you need more help, visit the Dockerfile reference guide at
 # https://docs.docker.com/go/dockerfile-reference/
 
-# Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
-
 ARG PYTHON_VERSION=3.13.5
 FROM python:${PYTHON_VERSION}-slim as base
 
@@ -17,6 +15,16 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
+
+RUN apt-get update
+RUN apt-get install locales locales-all -y
+RUN apt update && apt install tzdata -y
+
+ENV TZ="America/Sao_Paulo"
+ENV LC_ALL pt_BR.UTF-8
+ENV LANG pt_BR.UTF-8
+ENV LANGUAGE pt_BR.UTF-8
+
 
 # Create a non-privileged user that the app will run under.
 # See https://docs.docker.com/go/dockerfile-user-best-practices/
@@ -48,4 +56,5 @@ COPY . .
 EXPOSE 8000
 
 # Run the application.
-CMD gunicorn '.venv.Lib.site-packages.twisted.web.wsgi' --bind=0.0.0.0:8000
+CMD ["python", "filopedia/manage.py", "runserver", "0.0.0.0:8000"]
+#CMD gunicorn '.venv.Lib.site-packages.twisted.web.wsgi' --bind=0.0.0.0:8000
