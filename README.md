@@ -42,6 +42,8 @@ Use `docker exec` para abrir um terminal dentro do container
     
     docker exec -it filopedia-django bash
 
+    docker run -p 8000:8000 -d filopedia-django 
+
 # Utilização
 
 # Dúvidas? Ideias?
