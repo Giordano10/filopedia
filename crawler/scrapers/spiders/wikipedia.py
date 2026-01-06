@@ -1,7 +1,8 @@
 from pathlib import Path
 import scrapy
-from scrapers.items import WikipediaItem
+from ..items import WikipediaItem
 import json
+from crawler.constants import URLS_PATH
 
 class WikipediaSpider(scrapy.Spider):
     """
@@ -22,7 +23,7 @@ class WikipediaSpider(scrapy.Spider):
 
 
     
-    with open("urls.json", "r", encoding="utf-8") as arquivo:
+    with open(URLS_PATH, "r", encoding="utf-8") as arquivo:
         lista_urls = json.load(arquivo)
         lista_urls_wikipedia = [list(dicionario.values())[0] for dicionario in lista_urls]
 

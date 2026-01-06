@@ -28,6 +28,13 @@
                 "wikipedia"
             ],
             "console": "integratedTerminal"
+        },
+        {
+            "name": "Crawler",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}\\crawler_command.py",
+            "console": "integratedTerminal"
         }
     ]
 }

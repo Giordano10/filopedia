@@ -3,6 +3,7 @@ import re
 import json
 from datetime import datetime
 import w3lib.html
+from crawler.constants import DATA_PATH, URLS_PATH
 
 class MapeadoraPipeline:
     def open_spider(self, spider):
@@ -14,7 +15,7 @@ class MapeadoraPipeline:
             Caso não carregue o json, vai gerar uma lista vazia
         """
         try:
-            self.arquivo = open("urls.json", "w+", encoding="utf-8")
+            self.arquivo = open(URLS_PATH, "w+", encoding="utf-8")
             self.lista_urls = json.load(self.arquivo)
         except:
             self.lista_urls = []
@@ -121,7 +122,7 @@ class WikipediaPipeline:
         if item['codigo_http'] != 200:
             nome_arquivo = str(item['codigo_http']) + "_" + item['url'].split("/")[-1]
 
-        with open(f"scrapers/arquivos_brutos/{nome_arquivo}.json", "w+", encoding="utf-8") as f:
+        with open(f"{DATA_PATH}{nome_arquivo}.json", "w+", encoding="utf-8") as f:
             dados_convertidos = json.dumps(dados, ensure_ascii=False, indent=4)
             f.write(dados_convertidos)
 
