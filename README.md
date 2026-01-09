@@ -29,7 +29,7 @@ Entendemos a dificuldade para manter o rigor em relação ao conteúdo extraído
 O projeto está dividido em três partes:
 - Crawler - sendo `crawler` o diretório correspondente
 - Camada de persistência - sendo `data` o diretório correspondente
-- Projeto Django - sendo `filopedi` o diretório correspondente
+- Projeto Django - sendo `filopedia` o diretório correspondente
 
 O Crawler é o motor de extração dos dados que serão consumidos pelo projeto Django. Ele utiliza como biblioteca principal o Scrapy, que extrai através das aranhas (spiders) os dados sobre filosofia.
 
@@ -43,15 +43,20 @@ Após serem salvos na camada de persistência, a aplicação Django os consome p
 
 Você pode usar o arquivo `compose.yaml` para iniciar um container com todas as dependências necessárias
 
-      docker compose -f compose.yaml up -d
+      docker compose up --build -d
 
 O container já estará rodando a aplicação Django na porta local 8000. Para acessá-la, basta acessar no seu navegador `localhost:8000`
 
+Para parar os containeres:
+
+      docker compose down
 
 Os comandos a seguir devem ser rodados dentro do container
 Use `docker exec` para abrir um terminal dentro do container
     
     docker exec -it filopedia bash
+
+
 
     docker run -p 8000:8000 -d filopedia
 
