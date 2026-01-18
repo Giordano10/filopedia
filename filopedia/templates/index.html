@@ -5,26 +5,72 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <!--<meta http-equiv="refresh" content="3">-->
+
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
+
+    <style>
+        .container{
+            display: flex;
+            flex-flow: wrap;
+            justify-content: space-evenly;
+            width: 100vw;
+            height: 100vh;
+        }
+        .cards{
+            width: 20vw;
+            text-align: justify;
+            margin-bottom: 1%;
+            padding: 0.5%;
+            border: 1px #000 solid;
+            max-height: 900px;
+        }
+        .cards img{
+            width: 100%;
+            height: 50vh;
+        }
+        .cards p{
+            width: 100%;
+            height: 30vh;
+            overflow-y: scroll
+        }
+        .cards ul{
+            width: 80%;
+            height: 20vh;
+            overflow-x: hidden;
+        }
+    </style>
+
+
 </head>
 <body>
-    <div>
-        <h1>
-            ESTÁ RODANDO!!!
-            <h2> IRRAAAAA</h2>
-        </h1>
-        {{ arquivo }}
+    <div class="container">
+
+        {% for card in cards %}
+            <div class="cards">
+                <img src="{{ card.imagem }}">
+                <h1>{{ card.titulo.0 }}</h1>
+                {% for chave, conteudo in card.items %}
+                    {% if chave == "conteudo" %}
+                    <p>
+                        {{ conteudo }}
+                    </p>
+                    {% endif %}
+                {% endfor %}
+                <div>
+                    <h3>Ligações externas</h3>
+                    <ul>
+                        {% for ligacao in card.ligacoes %}
+                            <li>
+                                {{ ligacao }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-
-    <h1>{{ json.titulo }}</h1>
-    <img src="{{ json.imagem }}">
-
-    {% for chave, conteudo in json.items %}
-        {% if chave != "imagem" %}
-            {{ conteudo }}
-        {% endif %}
-
-    {% endfor %}
 </body>
 </html>
