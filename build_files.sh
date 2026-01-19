@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+echo "Migrando banco de dados..."
+python3 filopedia/manage.py makemigrations --noinput
+python3 filopedia/manage.py migrate --noinput
+
+echo "Coletando arquivos estáticos..."
+python3 filopedia/manage.py collectstatic --noinput
