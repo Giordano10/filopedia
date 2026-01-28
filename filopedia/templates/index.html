@@ -16,7 +16,7 @@
             display: flex;
             flex-flow: wrap;
             justify-content: space-evenly;
-            width: 100vw;
+            width: 98vw;
             height: 100vh;
         }
         .cards{
@@ -31,7 +31,7 @@
             width: 100%;
             height: 50vh;
         }
-        .cards p{
+        .cards .conteudo{
             width: 100%;
             height: 30vh;
             overflow-y: scroll
@@ -51,24 +51,26 @@
         {% for card in cards %}
             <div class="cards">
                 <img src="{{ card.imagem }}">
-                <h1>{{ card.titulo.0 }}</h1>
+                <h1>
+                    <a href="{% url 'card' card.titulo.0 %}">
+                        {{ card.titulo.0 }}
+                    </a>
+                </h1>
+
                 {% for chave, conteudo in card.items %}
                     {% if chave == "conteudo" %}
-                    <p>
-                        {{ conteudo }}
+                    <p class="conteudo">
+                       <!-- {% for linha in conteudo %}
+                            {{ linha }}
+                        {% endfor %}-->
+
+                        {{ conteudo.0 }}
                     </p>
                     {% endif %}
                 {% endfor %}
-                <div>
-                    <h3>Ligações externas</h3>
-                    <ul>
-                        {% for ligacao in card.ligacoes %}
-                            <li>
-                                {{ ligacao }}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+                <p>
+                    <a href="{% url 'card' card.titulo.0 %}">Ler mais</a>
+                </p>
             </div>
         {% endfor %}
     </div>

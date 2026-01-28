@@ -1,9 +1,13 @@
 from django.shortcuts import render
 import json
-from cards.data_reader import get_all_data
+from cards.data_retriever import get_all_data, get_philosopher
+#from filopedia.cards.data_retriever import get_all_data
 from cards.constants import DATA_PATH
 
 def index(request):
+    """
+    Retorna todos os filósofos em um dicionário chamado Cards
+    """
     arquivos = get_all_data()
 
     cards = []
@@ -17,3 +21,11 @@ def index(request):
         }
 
     return render(request, "index.html", context=context)
+
+
+
+def card(request, filosofo):
+    filosofo = filosofo.replace(" ", "_")
+    card_filosofo = get_philosopher(filosofo)
+
+    return render(request, "card.html", card_filosofo)

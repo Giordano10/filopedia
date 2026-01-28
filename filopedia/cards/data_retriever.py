@@ -1,0 +1,23 @@
+from cards.constants import DATA_PATH
+from pathlib import Path
+import json
+
+def get_all_data():
+    data_directory = Path(DATA_PATH)
+    arquivos = [arquivo.name for arquivo in data_directory.iterdir() if "404" not in arquivo.name]
+
+    return arquivos
+
+def get_philosopher(name):
+    data_directory = Path(DATA_PATH)
+    
+    for arquivo in data_directory.iterdir():
+        if name in arquivo.name and "404" not in arquivo.name:
+            caminho_arquivo = arquivo.name
+
+            break
+
+    with open(f"{DATA_PATH}{caminho_arquivo}", "r", encoding="utf-8") as f:
+        filosofo = json.load(f)
+
+    return filosofo
