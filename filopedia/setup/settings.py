@@ -116,3 +116,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
+# onde os arquivos estáticos estão
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'setup/static')
+]
+
+# para onde o django irá enviá-los
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

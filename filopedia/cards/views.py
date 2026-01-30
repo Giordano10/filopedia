@@ -20,7 +20,7 @@ def index(request):
             "cards": cards
         }
 
-    return render(request, "index.html", context=context)
+    return render(request, "cards/index.html", context=context)
 
 
 
@@ -28,4 +28,4 @@ def card(request, filosofo):
     filosofo = filosofo.replace(" ", "_").lower()
     card_filosofo = get_philosopher(filosofo)
 
-    return render(request, "card.html", card_filosofo)
+    return render(request, "cards/card.html", card_filosofo)
