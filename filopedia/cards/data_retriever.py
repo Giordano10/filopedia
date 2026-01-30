@@ -10,13 +10,16 @@ def get_all_data():
 
 def get_philosopher(name):
     data_directory = Path(DATA_PATH)
-    
+    caminho_arquivo = None
     for arquivo in data_directory.iterdir():
         if name in arquivo.name and "404" not in arquivo.name:
             caminho_arquivo = arquivo.name
 
             break
-
+        
+    if caminho_arquivo is None:
+        return {"erro": "Filósofo não encontrado"}
+    
     with open(f"{DATA_PATH}{caminho_arquivo}", "r", encoding="utf-8") as f:
         filosofo = json.load(f)
 
