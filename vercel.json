@@ -4,13 +4,14 @@
     {
       "src": "filopedia/setup/wsgi.py",
       "use": "@vercel/python",
-      "config": { "runtime": "python3.13" }
+      "config": { "runtime": "python3.12" }
     }
   ],
   "routes": [
     {
       "src": "/static/(.*)",
-      "dest": "filopedia/staticfiles/$1"
+      "dest": "filopedia/staticfiles/$1",
+      "continue": true
     },
     {
       "src": "/(.*)",
