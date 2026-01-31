@@ -1,0 +1,130 @@
+body {
+    background-color: #F5F1E9; /* Fundo papiro */
+    color: #2C3E50;           /* Texto mármore */
+    font-family: 'Georgia', serif; /* Fontes com serifa remetem a livros */
+}
+
+.custom-card {
+    background-color: #FFFFFF;
+    border: 1px solid #D7CCC8; /* Borda sépia */
+    border-radius: 0;          /* Cantos retos trazem mais seriedade */
+    transition: transform 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img-standard {
+    /*height: 200px;*/
+    object-fit: cover; /* Corta a imagem para preencher o retângulo sem esticar */
+    /*width: 100%;*/
+    width: auto;
+    height: auto;
+}
+.custom-card:hover {
+    transform: translateY(-5px); /* Efeito suave ao passar o mouse */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.card-title a {
+    color: #2C3E50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-filosofia {
+    background-color: #4A5D4E;
+    color: #F5F1E9;
+    border: none;
+    border-radius: 0;
+    padding: 8px 20px;
+}
+
+.btn-filosofia:hover {
+    background-color: #38473b;
+    color: #FFFFFF;
+}
+
+/* Estilo da Navbar Filosófica */
+/* Navbar que simula a cor e textura dos cards */
+.navbar-custom {
+    background-color: #F5F1E9 !important; /* Mesma cor de fundo sugerida */
+    border-bottom: 1px solid #D7CCC8;      /* Borda sutil cor sépia, como a do card */
+    padding: 0.8rem 1rem;
+}
+
+.navbar-custom .navbar-brand {
+    color: #2C3E50 !important;           /* Texto escuro para contraste */
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.navbar-custom .nav-link {
+    color: #4A5D4E !important;           /* Verde oliva para os links */
+    font-family: 'Georgia', serif;
+    font-weight: 500;
+    margin-left: 15px;
+}
+
+.navbar-custom .nav-link:hover {
+    color: #2C3E50 !important;           /* Escurece ao passar o mouse */
+    text-decoration: underline;
+}
+
+/* Ajuste do botão mobile para fundo claro */
+.navbar-toggler {
+    border-color: #D7CCC8;
+}
+
+
+/* Estilo focado em legibilidade */
+.philosophy-container {
+    max-width: 800px; /* Largura de leitura ideal para não cansar os olhos */
+    background-color: #FFFFFF;
+    padding: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    border: 1px solid #D7CCC8;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.philosophy-title {
+    font-family: 'Georgia', serif;
+    color: #2C3E50;
+    font-weight: bold;
+    border-bottom: 2px solid #4A5D4E;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+.philosophy-img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.philosophy-img {
+    /*width: 100%;*/
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 2px;
+    margin-bottom: 2.5rem;
+    width: auto;
+    height: auto;
+}
+
+.philosophy-text {
+    font-family: 'Georgia', serif;
+    font-size: 1.15rem;
+    line-height: 1.8; /* Espaçamento entre linhas para textos densos */
+    color: #333;
+    text-align: justify;
+}
+
+.btn-back {
+    color: #4A5D4E;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}

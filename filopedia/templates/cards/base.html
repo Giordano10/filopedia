@@ -1,0 +1,25 @@
+{% load static %}
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+
+        <title>Filopedia</title>
+        
+        <link rel="stylesheet" href="{% static '/styles/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static '/styles/main_style.css' %}">
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    </head>
+    <body>
+        {% include 'partials/_menu.html' %}
+        
+        {% block content %}
+        {% endblock %}
+        
+        {% include 'partials/_rodape.html' %}
+    </body>
+</html>

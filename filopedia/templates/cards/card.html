@@ -1,0 +1,34 @@
+{% extends 'cards/base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <div class="container d-flex justify-content-center">
+        <article class="philosophy-container">
+            <div class="philosophy-img-container">
+            {% if imagem is None %}
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png?20210521171500" class="philosophy-img shadow-sm" alt="{{ card.titulo.0 }}">
+            {% else %}
+                <img src="{{ imagem }}" class="philosophy-img shadow-sm" alt="{{ card.titulo.0 }}">
+            {% endif %}
+            </div>
+            <h1 class="philosophy-title">
+                {{ titulo.0 }}
+            </h1>            
+            
+            <div class="philosophy-text">
+                {% for paragrafo in conteudo %}
+                    <p>{{ paragrafo }}</p>
+                {% endfor %}
+            </div>
+    
+            <hr class="my-5" style="border-top: 1px solid #D7CCC8;">
+            
+            <div class="text-center text-muted">
+                <small>
+                    Referência: <a href="{{ url }}">{{ url }}</a>
+                </small>
+            </div>    
+        </article>
+    </div>
+{% endblock %}
