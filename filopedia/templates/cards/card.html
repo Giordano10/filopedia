@@ -2,32 +2,33 @@
 {% load static %}
 {% block content %}
 
-        <div class="container">
-            <section class="secao">
-                {% if imagem is None %}
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png?20210521171500" alt="">
-                {% else %}
-                    <img src="{{ imagem }}">
-                {% endif %}
-                <h1>
-                    {{ titulo.0 }}
-                </h1>
-                <p>
-                    {{ conteudo.0 }}
-                </p>
-            </section>
-            <div class="card">
-                {% for linha in conteudo %}
-                <p>
-                    {% if linha != conteudo.0 %}
-                        {{ linha }}
-                    {% endif %}
-                </p>
-                {% endfor %}
-                <p>
-                    Referência: <a href="{{ url }}">{{ url }}</a>
-                </p>
+
+    <div class="container d-flex justify-content-center">
+        <article class="philosophy-container">
+            <div class="philosophy-img-container">
+            {% if imagem is None %}
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png?20210521171500" class="philosophy-img shadow-sm" alt="{{ card.titulo.0 }}">
+            {% else %}
+                <img src="{{ imagem }}" class="philosophy-img shadow-sm" alt="{{ card.titulo.0 }}">
+            {% endif %}
             </div>
-        </div>
-        
+            <h1 class="philosophy-title">
+                {{ titulo.0 }}
+            </h1>            
+            
+            <div class="philosophy-text">
+                {% for paragrafo in conteudo %}
+                    <p>{{ paragrafo }}</p>
+                {% endfor %}
+            </div>
+    
+            <hr class="my-5" style="border-top: 1px solid #D7CCC8;">
+            
+            <div class="text-center text-muted">
+                <small>
+                    Referência: <a href="{{ url }}">{{ url }}</a>
+                </small>
+            </div>    
+        </article>
+    </div>
 {% endblock %}
