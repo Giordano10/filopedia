@@ -18,6 +18,7 @@
     }
   ],
   "env": {
-    "PYTHONPATH": "filopedia"
+    "PYTHONPATH": "filopedia",
+    "DJANGO_SETTINGS_MODULE": "setup.settings"
   }
 }

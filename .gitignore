@@ -3,5 +3,6 @@
 .mypy_cache
 .vscode
 .venv
+.env
 __pycache__
 data/404*
